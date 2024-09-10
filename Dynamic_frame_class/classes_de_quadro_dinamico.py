@@ -14,11 +14,14 @@ class MyCheckboxFrame(customtkinter.CTkFrame):
         self.values = values
         self.checkboxes = []
 
+        #Inteirando sobre os valores e craindo as checkboxes com os valores passados 
         for i, value in enumerate(self.values):
             checkbox = customtkinter.CTkCheckBox(self, text=value)
             checkbox.grid(row=i, column=0, padx=10, pady=(10, 0), sticky="w")
             self.checkboxes.append(checkbox)
 
+
+    # Função que gera um array com os valores dos checkboxes 
     def get(self):
         checked_checkboxes = []
         for checkbox in self.checkboxes:
@@ -32,19 +35,50 @@ class App(customtkinter.CTk):
         
         super().__init__()
 
-        self.title("my app")
-        self.geometry("400x180")
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(0, weight=1)
-
-        self.checkbox_frame = MyCheckboxFrame(self, values=["MAteus 1", "Assis 2", "Oliveira 3"]) # o Self esta referenciando a propia classe que seria o app
-        self.checkbox_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="nsw")
+        #Caracteristicas da janla do app
+        self.title("my app") # Titulo
+        self.geometry("400x180") # Dimenção
         
+        """ 
+        grid_columnconfigure((0, 1), weight=1) 
+        
+        Configurção da coluna (0, 1): Essa é a tupla que especifica as colunas que estão sendo configuradas (no caso, a coluna 0 e a coluna 1).
+        
+        weight=1: O peso (weight) é usado para determinar como o espaço adicional (quando a janela é redimensionada) será distribuído entre as 
+        colunas. Quando duas colunas têm o mesmo peso, elas compartilharão o espaço adicional de maneira igual. 
+        Se uma coluna tivesse weight=2, ela receberia o dobro do espaço da coluna com weight=1.
+        
+        """
+        self.grid_columnconfigure((0, 1), weight=1) # Configurção da coluna  App
+        
+        """ 
+        self.grid_rowconfigure(0): Refere-se à linha 0 do layout de grade dentro do widget no qual você está chamando esse método
+        
+        weight=1: O argumento weight define a "prioridade" com que essa linha será redimensionada em relação a outras linhas quando o 
+        layout mudar (como quando a janela é redimensionada). O weight=1 significa que essa linha será redimensionada proporcionalmente 
+        ao espaço disponível. Se todas as linhas configuradas tiverem o mesmo peso, elas se expandirão ou contrairão igualmente. 
+        Linhas com pesos maiores receberão mais espaço.
+        
+        
+        """
+        self.grid_rowconfigure(0, weight=1)# Configurção da linha App
+
+        # Construinfo o frame
+        self.checkbox_frame = MyCheckboxFrame(self, values=["Mateus", "Assis 2", "Oliveira 3"]) # o Self esta referenciando a propia classe que seria o app
+        self.checkbox_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="nsew") # Definindo as caracreristiscas do grid
+        
+        # Construinfo o frame
+        self.checkbox_frame_2 = MyCheckboxFrame(self, values=["Joyce 1", "Beatris 2", "Assis 3"]) # o Self esta referenciando a propia classe que seria o app
+        self.checkbox_frame_2.grid(row=0, column=1, padx=10, pady=(10, 0), sticky="nsew") # Definindo as caracreristiscas do grid
+        
+        
+        #Contruindo o bontão de ação 
         self.button = customtkinter.CTkButton(self, text="my button", command=self.button_callback)
-        self.button.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
+        self.button.grid(row=3, column=0, padx=10, pady=10, sticky="ew",columnspan=2)
 
     def button_callback(self):
-        print("checked checkboxes:", self.checkbox_frame.get())
+        print("checkbox_frame_1:", self.checkbox_frame.get())
+        print("checkbox_frame_2:", self.checkbox_frame_2.get())
 
 
 app = App()
