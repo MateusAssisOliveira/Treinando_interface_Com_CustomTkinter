@@ -46,8 +46,9 @@ class MyCheckboxFrame(customtkinter.CTkFrame):
             
             """
             
-            checkbox = customtkinter.CTkCheckBox(self, text=value,bg_color='red')
+            checkbox = customtkinter.CTkCheckBox(self, text=value)
             checkbox.grid(row=i, column=0, padx=10, pady=(10, 0), sticky="w")
+            checkbox.get()
             self.checkboxes.append(checkbox)
 
 
