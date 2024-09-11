@@ -16,7 +16,37 @@ class MyCheckboxFrame(customtkinter.CTkFrame):
 
         #Inteirando sobre os valores e craindo as checkboxes com os valores passados 
         for i, value in enumerate(self.values):
-            checkbox = customtkinter.CTkCheckBox(self, text=value)
+            
+            
+            """ 
+            CTkCheckBox
+            
+                >>> Parâmetros de Tamanho e Estilo:
+
+                -> width, height: Largura e altura do widget.
+                -> checkbox_width, checkbox_height: Tamanho da caixa de seleção.
+                -> corner_radius, border_width: Raio dos cantos arredondados e largura da borda.
+
+                >>> Parâmetros de Cor:
+
+                -> bg_color, fg_color, hover_color, border_color, checkmark_color, text_color, text_color_disabled: 
+                Definem as cores de fundo, primeiro plano, hover, borda, marca de verificação, texto e texto desativado.
+                
+                >>> Texto e Fonte:
+
+                -> text, font, textvariable: Texto exibido na caixa de seleção, fonte e variável de texto.
+                
+                >>> Estado e Comportamento:
+
+                -> state: Estado do widget (por exemplo, NORMAL ou DISABLED).
+                -> hover: Se o efeito de hover está ativado.
+                -> command: Função a ser chamada quando a caixa de seleção é clicada.
+                -> onvalue, offvalue: Valores associados ao estado ativado e desativado.
+                -> variable: Variável associada ao estado da caixa de seleção.
+            
+            """
+            
+            checkbox = customtkinter.CTkCheckBox(self, text=value,bg_color='red')
             checkbox.grid(row=i, column=0, padx=10, pady=(10, 0), sticky="w")
             self.checkboxes.append(checkbox)
 
