@@ -1,0 +1,20 @@
+Significado de nsew
+
+nsew é uma combinação de quatro direções:
+
+n: Norte (North)
+s: Sul (South)
+e: Leste (East)
+w: Oeste (West)
+Quando você usa nsew no método grid() de um widget, está especificando como o widget deve se expandir para preencher o espaço disponível em sua célula na grade.
+
+Uso no Método grid()
+O método grid() é usado para colocar widgets em uma grade dentro de seu contêiner pai. O parâmetro sticky define como o widget deve se expandir dentro da célula da grade. Os valores possíveis para sticky são combinações das letras n, s, e, e w:
+
+"n": O widget se alinha ao topo da célula.
+"s": O widget se alinha à parte inferior da célula.
+"e": O widget se alinha à direita da célula.
+"w": O widget se alinha à esquerda da célula.
+"ns": O widget se estende verticalmente, cobrindo toda a altura da célula.
+"ew": O widget se estende horizontalmente, cobrindo toda a largura da célula.
+"nsew": O widget se estende tanto vertical quanto horizontalmente, cobrindo toda a célula.
